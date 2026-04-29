@@ -19,743 +19,182 @@
     --stone: #9c8077;
     --border: #f0ddd8;
     --border-light: #faf0ed;
-    --sage: #7a9e7e;
-    --gold: #c9952a;
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    background: var(--cream);
-    color: var(--chocolate);
-    font-family: 'Nunito', sans-serif;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  /* PAGE SYSTEM */
+  body { background: var(--cream); color: var(--chocolate); font-family: 'Nunito', sans-serif; min-height: 100vh; overflow-x: hidden; }
   .page { display: none; min-height: 100vh; }
   .page.active { display: block; }
-
-  /* ── HEADER ── */
-  .header {
-    background: var(--white);
-    border-bottom: 1px solid var(--border);
-    padding: 20px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 12px rgba(45,24,16,0.06);
-  }
-
-  .logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--chocolate);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
+  .header { background: var(--white); border-bottom: 1px solid var(--border); padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px rgba(45,24,16,0.06); }
+  .logo { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--chocolate); display: flex; align-items: center; gap: 8px; }
   .logo span { color: var(--rose); }
-
-  .nav-btn {
-    background: none;
-    border: 1.5px solid var(--border);
-    border-radius: 50px;
-    padding: 8px 18px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--mocha);
-    cursor: pointer;
-    transition: all 0.2s;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .nav-btn:hover, .nav-btn.active-nav {
-    background: var(--chocolate);
-    border-color: var(--chocolate);
-    color: white;
-  }
-
   .nav-group { display: flex; gap: 8px; }
-
-  /* ── MAIN CONTENT ── */
-  .content {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 40px 24px 80px;
-  }
-
-  /* ── PAGE HERO ── */
-  .page-hero {
-    text-align: center;
-    margin-bottom: 40px;
-  }
-
-  .page-hero .tag {
-    display: inline-block;
-    background: var(--blush);
-    color: var(--rose);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    padding: 6px 16px;
-    border-radius: 50px;
-    margin-bottom: 16px;
-  }
-
-  .page-hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(32px, 5vw, 46px);
-    font-weight: 700;
-    color: var(--chocolate);
-    line-height: 1.1;
-    margin-bottom: 12px;
-  }
-
-  .page-hero h1 em {
-    color: var(--rose);
-    font-style: italic;
-  }
-
-  .page-hero p {
-    font-size: 15px;
-    color: var(--stone);
-    font-weight: 400;
-    line-height: 1.6;
-    max-width: 480px;
-    margin: 0 auto;
-  }
-
-  /* ── CATEGORY TABS ── */
-  .tabs-wrap {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 32px;
-  }
-
-  .tab-btn {
-    padding: 10px 20px;
-    border-radius: 50px;
-    border: 1.5px solid var(--border);
-    background: var(--white);
-    font-family: 'Nunito', sans-serif;
-    font-size: 13.5px;
-    font-weight: 600;
-    color: var(--mocha);
-    cursor: pointer;
-    transition: all 0.2s;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .tab-btn:hover {
-    border-color: var(--rose);
-    color: var(--rose);
-  }
-
-  .tab-btn.active {
-    background: var(--rose);
-    border-color: var(--rose);
-    color: white;
-    box-shadow: 0 4px 14px rgba(232,131,106,0.3);
-  }
-
-  /* ── FILTERS ── */
-  .filters-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 28px 32px;
-    margin-bottom: 24px;
-    box-shadow: 0 2px 16px rgba(45,24,16,0.04);
-  }
-
-  .filters-title {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: var(--rose);
-    margin-bottom: 18px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .filters-title::after {
-    content: ''; flex: 1;
-    height: 1px; background: var(--border-light);
-  }
-
-  .filters-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-  }
-
-  .filter-group label {
-    display: block;
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--mocha);
-    margin-bottom: 6px;
-    letter-spacing: 0.5px;
-  }
-
-  .filter-group select {
-    width: 100%;
-    padding: 10px 14px;
-    border: 1.5px solid var(--border);
-    border-radius: 10px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 13.5px;
-    color: var(--chocolate);
-    background: var(--cream);
-    cursor: pointer;
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c96b52' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 12px center;
-    padding-right: 32px;
-    transition: border-color 0.2s;
-  }
-
-  .filter-group select:focus {
-    outline: none;
-    border-color: var(--rose);
-  }
-
-  /* ── GENERATE BTN ── */
-  .generate-btn {
-    width: 100%;
-    background: var(--rose);
-    color: white;
-    border: none;
-    border-radius: 14px;
-    padding: 18px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    cursor: pointer;
-    transition: all 0.2s;
-    margin-top: 20px;
-    box-shadow: 0 4px 20px rgba(232,131,106,0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-  }
-
-  .generate-btn:hover {
-    background: var(--rose-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(201,107,82,0.35);
-  }
-
-  .generate-btn:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    transform: none;
-  }
-
-  /* ── LOADING ── */
-  .loading {
-    display: none;
-    text-align: center;
-    padding: 40px 20px;
-  }
-
-  .loading.visible { display: block; }
-
-  .loading-dots {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-bottom: 16px;
-  }
-
-  .loading-dots span {
-    width: 10px; height: 10px;
-    border-radius: 50%;
-    background: var(--rose);
-    animation: bounce 1.2s infinite;
-  }
-
-  .loading-dots span:nth-child(2) { animation-delay: 0.2s; }
-  .loading-dots span:nth-child(3) { animation-delay: 0.4s; }
-
-  @keyframes bounce {
-    0%, 80%, 100% { transform: scale(0.6); opacity: 0.5; }
-    40% { transform: scale(1); opacity: 1; }
-  }
-
-  .loading p {
-    font-size: 14px;
-    color: var(--stone);
-    font-style: italic;
-  }
-
-  /* ── RESULTS ── */
+  .nav-btn { background: none; border: 1.5px solid var(--border); border-radius: 50px; padding: 8px 18px; font-family: 'Nunito', sans-serif; font-size: 13px; font-weight: 600; color: var(--mocha); cursor: pointer; transition: all 0.2s; }
+  .nav-btn:hover, .nav-btn.active-nav { background: var(--chocolate); border-color: var(--chocolate); color: white; }
+  .content { max-width: 800px; margin: 0 auto; padding: 40px 24px 80px; }
+  .page-hero { text-align: center; margin-bottom: 40px; }
+  .page-hero .tag { display: inline-block; background: var(--blush); color: var(--rose); font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; padding: 6px 16px; border-radius: 50px; margin-bottom: 16px; }
+  .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(32px, 5vw, 46px); font-weight: 700; color: var(--chocolate); line-height: 1.1; margin-bottom: 12px; }
+  .page-hero h1 em { color: var(--rose); font-style: italic; }
+  .page-hero p { font-size: 15px; color: var(--stone); line-height: 1.6; max-width: 480px; margin: 0 auto; }
+  .tabs-wrap { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-bottom: 32px; }
+  .tab-btn { padding: 10px 20px; border-radius: 50px; border: 1.5px solid var(--border); background: var(--white); font-family: 'Nunito', sans-serif; font-size: 13.5px; font-weight: 600; color: var(--mocha); cursor: pointer; transition: all 0.2s; }
+  .tab-btn:hover { border-color: var(--rose); color: var(--rose); }
+  .tab-btn.active { background: var(--rose); border-color: var(--rose); color: white; box-shadow: 0 4px 14px rgba(232,131,106,0.3); }
+  .filters-card { background: var(--white); border: 1px solid var(--border); border-radius: 20px; padding: 28px 32px; margin-bottom: 24px; box-shadow: 0 2px 16px rgba(45,24,16,0.04); }
+  .filters-title { font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--rose); margin-bottom: 18px; display: flex; align-items: center; gap: 10px; }
+  .filters-title::after { content: ''; flex: 1; height: 1px; background: var(--border-light); }
+  .filters-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .filter-group label { display: block; font-size: 12px; font-weight: 700; color: var(--mocha); margin-bottom: 6px; }
+  .filter-group select { width: 100%; padding: 10px 14px; border: 1.5px solid var(--border); border-radius: 10px; font-family: 'Nunito', sans-serif; font-size: 13.5px; color: var(--chocolate); background: var(--cream); cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c96b52' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px; transition: border-color 0.2s; }
+  .filter-group select:focus { outline: none; border-color: var(--rose); }
+  .generate-btn { width: 100%; background: var(--rose); color: white; border: none; border-radius: 14px; padding: 18px; font-family: 'Nunito', sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; transition: all 0.2s; margin-top: 20px; box-shadow: 0 4px 20px rgba(232,131,106,0.3); }
+  .generate-btn:hover { background: var(--rose-dark); transform: translateY(-2px); }
   .results { display: none; }
-  .results.visible {
-    display: block;
-    animation: fadeUp 0.4s ease forwards;
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  .results-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px;
-  }
-
-  .results-header h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 22px;
-    color: var(--chocolate);
-  }
-
-  .regen-btn {
-    background: none;
-    border: 1.5px solid var(--border);
-    border-radius: 50px;
-    padding: 7px 16px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 12.5px;
-    font-weight: 600;
-    color: var(--mocha);
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-
-  .regen-btn:hover {
-    border-color: var(--rose);
-    color: var(--rose);
-  }
-
-  .concepts-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
-    margin-bottom: 28px;
-  }
-
-  .concept-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 18px;
-    padding: 24px 28px;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-
-  .concept-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(45,24,16,0.08);
-  }
-
-  .concept-card::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 4px;
-    background: var(--rose);
-    border-radius: 4px 0 0 4px;
-  }
-
-  .concept-number {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--rose);
-    margin-bottom: 8px;
-  }
-
-  .concept-selling-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--chocolate);
-    margin-bottom: 4px;
-    line-height: 1.2;
-  }
-
-  .concept-name {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--rose);
-    margin-bottom: 10px;
-    letter-spacing: 0.3px;
-  }
-
-  .concept-description {
-    font-size: 14px;
-    color: var(--mocha);
-    line-height: 1.65;
-    font-weight: 400;
-  }
-
-  .concept-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 12px;
-  }
-
-  .concept-tag {
-    background: var(--blush);
-    color: var(--rose-dark);
-    font-size: 11px;
-    font-weight: 600;
-    padding: 3px 10px;
-    border-radius: 20px;
-  }
-
-  /* ── FB PAGE ── */
-  .fb-page { background: var(--cream); }
-
-  .fb-hero {
-    background: linear-gradient(135deg, #1877f2 0%, #0d5ec9 100%);
-    color: white;
-    padding: 48px 24px;
-    text-align: center;
-  }
-
-  .fb-hero .tag {
-    display: inline-block;
-    background: rgba(255,255,255,0.2);
-    color: white;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    padding: 6px 16px;
-    border-radius: 50px;
-    margin-bottom: 16px;
-  }
-
-  .fb-hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(28px, 5vw, 42px);
-    font-weight: 700;
-    line-height: 1.15;
-    margin-bottom: 12px;
-  }
-
-  .fb-hero p {
-    font-size: 15px;
-    opacity: 0.85;
-    max-width: 480px;
-    margin: 0 auto;
-    line-height: 1.6;
-  }
-
-  .fb-content {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 40px 24px 80px;
-  }
-
-  .step-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 28px 32px;
-    margin-bottom: 20px;
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-  }
-
-  .step-number {
-    width: 44px; height: 44px;
-    border-radius: 50%;
-    background: var(--blush);
-    color: var(--rose);
-    font-family: 'Playfair Display', serif;
-    font-size: 20px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-
-  .step-content h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 18px;
-    color: var(--chocolate);
-    margin-bottom: 8px;
-  }
-
-  .step-content p {
-    font-size: 14px;
-    color: var(--mocha);
-    line-height: 1.7;
-    font-weight: 400;
-  }
-
-  .step-content .tip {
-    background: var(--blush);
-    border-left: 3px solid var(--rose);
-    border-radius: 0 8px 8px 0;
-    padding: 10px 14px;
-    margin-top: 12px;
-    font-size: 13px;
-    color: var(--mocha);
-    font-style: italic;
-    line-height: 1.6;
-  }
-
-  .post-template {
-    background: var(--cream);
-    border: 1.5px dashed var(--blush-mid);
-    border-radius: 14px;
-    padding: 18px 20px;
-    margin-top: 14px;
-    font-size: 13.5px;
-    color: var(--chocolate);
-    line-height: 1.7;
-    white-space: pre-wrap;
-    font-family: 'Nunito', sans-serif;
-  }
-
-  .post-label {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--stone);
-    margin-bottom: 8px;
-  }
-
-  .dos-donts {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-    margin-top: 14px;
-  }
-
-  .dos, .donts {
-    border-radius: 12px;
-    padding: 16px;
-  }
-
-  .dos { background: #f0f9f1; border: 1px solid #c3e6cb; }
-  .donts { background: #fdf0f0; border: 1px solid #f5c6cb; }
-
+  .results.visible { display: block; animation: fadeUp 0.4s ease forwards; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  .results-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+  .results-header h3 { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--chocolate); }
+  .regen-btn { background: none; border: 1.5px solid var(--border); border-radius: 50px; padding: 7px 16px; font-family: 'Nunito', sans-serif; font-size: 12.5px; font-weight: 600; color: var(--mocha); cursor: pointer; transition: all 0.2s; }
+  .regen-btn:hover { border-color: var(--rose); color: var(--rose); }
+  .concepts-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 28px; }
+  .concept-card { background: var(--white); border: 1px solid var(--border); border-radius: 18px; padding: 24px 28px; position: relative; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; }
+  .concept-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(45,24,16,0.08); }
+  .concept-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--rose); border-radius: 4px 0 0 4px; }
+  .concept-number { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--rose); margin-bottom: 8px; }
+  .concept-selling-title { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--chocolate); margin-bottom: 4px; line-height: 1.2; }
+  .concept-name { font-size: 13px; font-weight: 600; color: var(--rose); margin-bottom: 10px; }
+  .concept-description { font-size: 14px; color: var(--mocha); line-height: 1.65; }
+  .concept-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+  .concept-tag { background: var(--blush); color: var(--rose-dark); font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; }
+  /* FB PAGE */
+  .fb-hero { background: linear-gradient(135deg, #1877f2 0%, #0d5ec9 100%); color: white; padding: 48px 24px; text-align: center; }
+  .fb-hero .tag { display: inline-block; background: rgba(255,255,255,0.2); color: white; font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; padding: 6px 16px; border-radius: 50px; margin-bottom: 16px; }
+  .fb-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 5vw, 42px); font-weight: 700; line-height: 1.15; margin-bottom: 12px; }
+  .fb-hero p { font-size: 15px; opacity: 0.85; max-width: 480px; margin: 0 auto; line-height: 1.6; }
+  .fb-content { max-width: 760px; margin: 0 auto; padding: 40px 24px 80px; }
+  .step-card { background: var(--white); border: 1px solid var(--border); border-radius: 20px; padding: 28px 32px; margin-bottom: 20px; display: flex; gap: 20px; align-items: flex-start; }
+  .step-number { width: 44px; height: 44px; border-radius: 50%; background: var(--blush); color: var(--rose); font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .step-content h3 { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--chocolate); margin-bottom: 8px; }
+  .step-content p { font-size: 14px; color: var(--mocha); line-height: 1.7; }
+  .step-content .tip { background: var(--blush); border-left: 3px solid var(--rose); border-radius: 0 8px 8px 0; padding: 10px 14px; margin-top: 12px; font-size: 13px; color: var(--mocha); font-style: italic; line-height: 1.6; }
+  .post-template { background: var(--cream); border: 1.5px dashed var(--blush-mid); border-radius: 14px; padding: 18px 20px; margin-top: 14px; font-size: 13.5px; color: var(--chocolate); line-height: 1.7; white-space: pre-wrap; font-family: 'Nunito', sans-serif; }
+  .post-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--stone); margin-bottom: 8px; margin-top: 14px; }
+  .dos-donts { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+  .dos { background: #f0f9f1; border: 1px solid #c3e6cb; border-radius: 12px; padding: 16px; }
+  .donts { background: #fdf0f0; border: 1px solid #f5c6cb; border-radius: 12px; padding: 16px; }
   .dos h4 { color: #2d6a4f; font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
   .donts h4 { color: #c0392b; font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
-
-  .dos ul, .donts ul {
-    list-style: none;
-    padding: 0;
-  }
-
-  .dos ul li, .donts ul li {
-    font-size: 13px;
-    color: var(--mocha);
-    padding: 3px 0;
-    display: flex;
-    gap: 6px;
-    line-height: 1.4;
-  }
-
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 24px;
-    color: var(--chocolate);
-    margin-bottom: 6px;
-    margin-top: 36px;
-  }
-
-  .section-sub {
-    font-size: 14px;
-    color: var(--stone);
-    margin-bottom: 20px;
-    font-weight: 400;
-  }
-
-  /* error */
-  .error-box {
-    background: #fdf0f0;
-    border: 1px solid #f5c6cb;
-    border-radius: 14px;
-    padding: 20px 24px;
-    color: #c0392b;
-    font-size: 14px;
-    display: none;
-    margin-top: 16px;
-  }
-
-  .error-box.visible { display: block; }
-
-  @media (max-width: 540px) {
-    .filters-grid { grid-template-columns: 1fr; }
-    .dos-donts { grid-template-columns: 1fr; }
-    .step-card { flex-direction: column; gap: 12px; }
-    .nav-group { gap: 6px; }
-    .nav-btn { padding: 7px 12px; font-size: 12px; }
-  }
+  .dos ul, .donts ul { list-style: none; padding: 0; }
+  .dos ul li, .donts ul li { font-size: 13px; color: var(--mocha); padding: 3px 0; display: flex; gap: 6px; line-height: 1.4; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--chocolate); margin-bottom: 6px; margin-top: 36px; }
+  .section-sub { font-size: 14px; color: var(--stone); margin-bottom: 20px; }
+  @media (max-width: 540px) { .filters-grid { grid-template-columns: 1fr; } .dos-donts { grid-template-columns: 1fr; } .step-card { flex-direction: column; gap: 12px; } .nav-btn { padding: 7px 12px; font-size: 12px; } }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <div class="header">
   <div class="logo">🍰 <span>Bake</span>Lab</div>
   <div class="nav-group">
-    <button class="nav-btn active-nav" onclick="showPage('generator')">✨ Generator</button>
-    <button class="nav-btn" onclick="showPage('facebook')">📣 Advertise Locally</button>
+    <button class="nav-btn active-nav" onclick="showPage('generator', this)">✨ Generator</button>
+    <button class="nav-btn" onclick="showPage('facebook', this)">📣 Advertise Locally</button>
   </div>
 </div>
 
-<!-- ═══════════════════════════ PAGE 1: GENERATOR ═══════════════════════════ -->
+<!-- PAGE 1: GENERATOR -->
 <div class="page active" id="page-generator">
   <div class="content">
-
     <div class="page-hero">
       <div class="tag">Free Tool</div>
       <h1>Dessert <em>Concept</em> Generator</h1>
       <p>Pick your baking category, choose your inspiration, and get fresh dessert concepts with ready-to-use selling titles.</p>
     </div>
-
-    <!-- CATEGORY TABS -->
     <div class="tabs-wrap">
-      <button class="tab-btn active" onclick="setCategory(this, 'Cookies')">🍪 Cookies</button>
-      <button class="tab-btn" onclick="setCategory(this, 'Cakes')">🎂 Cakes</button>
-      <button class="tab-btn" onclick="setCategory(this, 'Brownies')">🍫 Brownies</button>
-      <button class="tab-btn" onclick="setCategory(this, 'Cake Pops')">🍭 Cake Pops</button>
-      <button class="tab-btn" onclick="setCategory(this, 'Breads')">🍞 Breads</button>
-      <button class="tab-btn" onclick="setCategory(this, 'Cupcakes')">🧁 Cupcakes</button>
+      <button class="tab-btn active" onclick="setCategory(this, 'cookies')">🍪 Cookies</button>
+      <button class="tab-btn" onclick="setCategory(this, 'cakes')">🎂 Cakes</button>
+      <button class="tab-btn" onclick="setCategory(this, 'brownies')">🍫 Brownies</button>
+      <button class="tab-btn" onclick="setCategory(this, 'cakepops')">🍭 Cake Pops</button>
+      <button class="tab-btn" onclick="setCategory(this, 'breads')">🍞 Breads</button>
+      <button class="tab-btn" onclick="setCategory(this, 'cupcakes')">🧁 Cupcakes</button>
     </div>
-
-    <!-- FILTERS -->
     <div class="filters-card">
       <div class="filters-title">Choose Your Inspiration</div>
       <div class="filters-grid">
         <div class="filter-group">
           <label>🔥 Trend / Vibe</label>
           <select id="filter-trend">
-            <option value="none">No preference</option>
-            <option value="viral on TikTok and Instagram right now">Viral & Trending</option>
-            <option value="hot topic in the foodie world">Hot Topic Foodie</option>
-            <option value="nostalgic comfort food revival">Nostalgic Revival</option>
-            <option value="luxury and elevated">Luxury & Elevated</option>
-            <option value="fun and whimsical">Fun & Whimsical</option>
+            <option value="any">No preference</option>
+            <option value="viral">Viral & Trending</option>
+            <option value="nostalgic">Nostalgic Revival</option>
+            <option value="luxury">Luxury & Elevated</option>
+            <option value="whimsical">Fun & Whimsical</option>
           </select>
         </div>
         <div class="filter-group">
           <label>🍂 Season</label>
           <select id="filter-season">
-            <option value="none">No preference</option>
+            <option value="any">No preference</option>
             <option value="spring">Spring</option>
             <option value="summer">Summer</option>
-            <option value="fall / autumn">Fall / Autumn</option>
+            <option value="fall">Fall / Autumn</option>
             <option value="winter">Winter</option>
           </select>
         </div>
         <div class="filter-group">
           <label>🎉 Holiday</label>
           <select id="filter-holiday">
-            <option value="none">No preference</option>
-            <option value="Valentine's Day">Valentine's Day</option>
-            <option value="Easter">Easter</option>
-            <option value="Mother's Day">Mother's Day</option>
-            <option value="Fourth of July">Fourth of July</option>
-            <option value="Halloween">Halloween</option>
-            <option value="Thanksgiving">Thanksgiving</option>
-            <option value="Christmas">Christmas</option>
-            <option value="New Year's">New Year's</option>
+            <option value="any">No preference</option>
+            <option value="valentine">Valentine's Day</option>
+            <option value="easter">Easter</option>
+            <option value="mothersday">Mother's Day</option>
+            <option value="july4">Fourth of July</option>
+            <option value="halloween">Halloween</option>
+            <option value="thanksgiving">Thanksgiving</option>
+            <option value="christmas">Christmas</option>
+            <option value="newyears">New Year's</option>
           </select>
         </div>
         <div class="filter-group">
           <label>🥗 Dietary</label>
           <select id="filter-diet">
-            <option value="none">No preference</option>
-            <option value="gluten-free">Gluten-Free</option>
+            <option value="any">No preference</option>
+            <option value="glutenfree">Gluten-Free</option>
             <option value="vegan">Vegan</option>
-            <option value="gluten-free AND vegan">Gluten-Free & Vegan</option>
-            <option value="high protein">High Protein</option>
-            <option value="dairy-free">Dairy-Free</option>
+            <option value="highprotein">High Protein</option>
+            <option value="dairyfree">Dairy-Free</option>
           </select>
         </div>
       </div>
-
-      <button class="generate-btn" id="generate-btn" onclick="generateConcepts()">
-        ✨ Generate My Dessert Concepts
-      </button>
+      <button class="generate-btn" onclick="generateConcepts()">✨ Generate My Dessert Concepts</button>
     </div>
-
-    <!-- LOADING -->
-    <div class="loading" id="loading">
-      <div class="loading-dots">
-        <span></span><span></span><span></span>
-      </div>
-      <p>Baking up fresh ideas for you...</p>
-    </div>
-
-    <!-- ERROR -->
-    <div class="error-box" id="error-box">
-      Something went wrong generating your concepts. Please try again!
-    </div>
-
-    <!-- RESULTS -->
     <div class="results" id="results">
       <div class="results-header">
         <h3>Your Dessert Concepts 🎉</h3>
-        <button class="regen-btn" onclick="generateConcepts()">↺ Regenerate</button>
+        <button class="regen-btn" onclick="generateConcepts()">↺ New Ideas</button>
       </div>
       <div class="concepts-grid" id="concepts-grid"></div>
     </div>
-
   </div>
 </div>
 
-<!-- ═══════════════════════════ PAGE 2: FACEBOOK ═══════════════════════════ -->
+<!-- PAGE 2: FACEBOOK -->
 <div class="page" id="page-facebook">
-
   <div class="fb-hero">
     <div class="tag">Local Marketing Guide</div>
     <h1>Sell Your Bakes in<br>Facebook Groups</h1>
     <p>No ads, no budget needed. Here's exactly how to post in local Facebook groups and get real orders from your community.</p>
   </div>
-
   <div class="fb-content">
-
     <div class="section-title">Why Facebook Groups Work</div>
     <div class="section-sub">Local buy/sell and community groups are full of people already looking to support home bakers. You just need to show up the right way.</div>
-
     <div class="step-card">
       <div class="step-number">1</div>
       <div class="step-content">
         <h3>Find the Right Groups to Join</h3>
         <p>Search Facebook for your city or town name + these keywords: "Buy Sell Trade", "Community Board", "Marketplace", "Foodie", "Moms of [your town]", or "[Your Town] Locals." Join 5–10 active groups before you post anything.</p>
-        <div class="tip">💡 Tip: Spend a few days liking and commenting on posts before you sell. Groups warm up to familiar faces, not strangers dropping links.</div>
+        <div class="tip">💡 Spend a few days liking and commenting on posts before you sell. Groups warm up to familiar faces, not strangers dropping links.</div>
       </div>
     </div>
-
     <div class="step-card">
       <div class="step-number">2</div>
       <div class="step-content">
@@ -778,30 +217,27 @@ DM me to place an order or drop a 🙋 below and I'll reach out! Pickup availabl
 [Your first name] 🧁</div>
       </div>
     </div>
-
     <div class="step-card">
       <div class="step-number">3</div>
       <div class="step-content">
         <h3>Photos Are Everything — Here's the Easy Way</h3>
         <p>You don't need a ring light or a professional camera. Natural window light + your phone + a clean surface is all you need. Shoot from directly above (flat lay) or at a slight angle. Always include your hand or a bite taken — it makes people feel like they're already eating it.</p>
-        <div class="tip">💡 Tip: Post your photos in the actual Facebook comment section after your main post goes live. Facebook's algorithm shows posts with photos in comments more than posts with photos attached.</div>
+        <div class="tip">💡 Post your photos in the actual Facebook comment section after your main post goes live. Facebook's algorithm shows posts with photos in comments more than posts with photos attached.</div>
       </div>
     </div>
-
     <div class="step-card">
       <div class="step-number">4</div>
       <div class="step-content">
         <h3>The Best Times to Post</h3>
         <p>Local community groups are most active on Thursday evenings, Friday mornings, and Sunday afternoons. Post your "this week's menu" on Thursday so people can plan weekend pickup. Post again Sunday for any leftovers or next-week pre-orders.</p>
-        <div class="tip">💡 Tip: Always reply to every comment — even just a heart emoji. Engagement keeps your post visible in the group feed longer.</div>
+        <div class="tip">💡 Always reply to every comment — even just a heart emoji. Engagement keeps your post visible in the group feed longer.</div>
       </div>
     </div>
-
     <div class="step-card">
       <div class="step-number">5</div>
       <div class="step-content">
         <h3>Handle Orders Like a Pro</h3>
-        <p>When someone comments, move them to DMs immediately. Confirm the order, share your Venmo/CashApp/PayPal, and give them a pickup window. Keep it simple — you don't need a fancy system when you're just starting out.</p>
+        <p>When someone comments, move them to DMs immediately. Confirm the order, share your Venmo/CashApp/PayPal, and give them a pickup window.</p>
         <div class="post-label">✏️ DM Reply Template</div>
         <div class="post-template">Hi [Name]! So glad you're interested 🧁 I'd love to bake for you!
 
@@ -813,10 +249,8 @@ I do pickup from [general area] — what day works best for you?
 Payment via [Venmo/CashApp/PayPal] at pickup. Let me know and I'll get you on the list! 🍪</div>
       </div>
     </div>
-
     <div class="section-title">Do's & Don'ts of Group Posting</div>
     <div class="section-sub">Follow these and you'll build a loyal local customer base fast.</div>
-
     <div class="dos-donts">
       <div class="dos">
         <h4>✅ Do This</h4>
@@ -834,7 +268,7 @@ Payment via [Venmo/CashApp/PayPal] at pickup. Let me know and I'll get you on th
         <h4>🚫 Avoid This</h4>
         <ul>
           <li>✗ Posting prices without photos</li>
-          <li>✗ Copying and pasting the same post every week</li>
+          <li>✗ Copy-pasting the same post every week</li>
           <li>✗ Posting in groups that ban selling</li>
           <li>✗ Using stock photos instead of your own</li>
           <li>✗ Ignoring comments or going quiet</li>
@@ -843,131 +277,213 @@ Payment via [Venmo/CashApp/PayPal] at pickup. Let me know and I'll get you on th
         </ul>
       </div>
     </div>
-
     <div class="step-card" style="margin-top: 24px; background: var(--blush); border-color: var(--blush-mid);">
       <div class="step-number" style="background: var(--rose); color: white;">🎯</div>
       <div class="step-content">
         <h3>Ready to Go Further?</h3>
-        <p>Once you have local buyers, the next step is turning your recipes into digital products that sell while you sleep — no orders, no delivery, no flour required. If you're curious about what that looks like, Nicole Crispi teaches home bakers exactly how to do it.</p>
+        <p>Once you have local buyers, the next step is turning your recipes into digital products that sell while you sleep. Nicole Crispi's Digital Wealth Blueprint shows bakers exactly how to do it — step by step.</p>
         <div class="tip" style="margin-top: 12px;">👉 <strong><a href="https://stan.store/NicoleCrispi/p/the-1-course-for-bakers-learning-online-wealth-q8dzha59" target="_blank" style="color: var(--rose-dark); text-decoration: none;">Get the Digital Wealth Blueprint →</a></strong></div>
       </div>
     </div>
-
   </div>
 </div>
 
 <script>
-  let currentCategory = 'Cookies';
+const CONCEPTS = {
+  cookies: {
+    any: {
+      any: {
+        any: {
+          any: [
+            { sellingTitle: "The Cookie That Breaks the Internet", productName: "Stuffed Brown Butter Chocolate Chip Cookie", description: "A thick, bakery-style cookie with golden brown butter dough stuffed with a melted chocolate ganache center. The edges are crispy, the center is gooey, and every bite is an experience. Bakers report these selling out within hours of posting.", tags: ["bestseller", "indulgent", "crowd-pleaser"] },
+            { sellingTitle: "Grandma Never Made Them This Good", productName: "Salted Caramel Snickerdoodle", description: "The classic cinnamon-sugar cookie reimagined with ribbons of salted caramel baked right in. Soft, chewy, and finished with flaky sea salt on top. Nostalgic flavor with a modern twist that has people ordering by the dozen.", tags: ["nostalgic", "elevated", "family-favorite"] },
+            { sellingTitle: "The One They'll Text Their Friends About", productName: "Pistachio Rose Shortbread", description: "Buttery shortbread packed with crushed pistachios and a hint of rose water, dipped in white chocolate. Delicate, floral, and impossibly elegant. Perfect for gifting and guaranteed to make anyone feel fancy.", tags: ["elegant", "giftable", "unique"] },
+            { sellingTitle: "Your New Obsession in Cookie Form", productName: "Espresso Toffee Crunch Cookie", description: "A deep, dark espresso-infused dough loaded with toffee bits and dark chocolate chunks. Crispy edges, chewy center, with that perfect coffee kick. The cookie for people who say they don't have a sweet tooth.", tags: ["bold", "coffee-lover", "crunchy"] },
+            { sellingTitle: "The Cookie Box Upgrade Nobody Knew They Needed", productName: "Birthday Cake Confetti Cookie", description: "Soft, dense vanilla cookies packed with rainbow sprinkles and a white chocolate drizzle. Festive, fun, and impossible to eat just one. These go fast at any event table and look stunning in a cookie box.", tags: ["festive", "fun", "giftable"] },
+            { sellingTitle: "They'll Ask for the Recipe Every Time", productName: "Tahini Dark Chocolate Chunk Cookie", description: "Nutty tahini dough swirled with pools of dark chocolate and finished with sesame seeds. Unique, sophisticated, and totally addictive. A conversation starter that sets your cookie menu apart from anyone else in your area.", tags: ["trending", "unique", "bold"] }
+          ]
+        }
+      }
+    },
+    viral: { any: { any: { any: [
+      { sellingTitle: "The TikTok Cookie Everyone Is Screaming About", productName: "Crème Brûlée Stuffed Sugar Cookie", description: "A pillowy sugar cookie shell hiding a creamy vanilla custard center, torched on top for that iconic crème brûlée crack. It's theatrical, delicious, and completely viral-worthy. Sell these as a 'you have to try it to believe it' experience.", tags: ["viral", "wow-factor", "trending"] },
+      { sellingTitle: "Dubai Chocolate Has Nothing on This", productName: "Pistachio Kunafa Cookie", description: "Inspired by the viral Dubai chocolate trend — a buttery cookie filled with crispy shredded phyllo and sweet pistachio cream, finished with a drizzle of milk chocolate. The dessert trend everyone is searching for, in cookie form.", tags: ["viral", "trending", "exotic"] },
+      { sellingTitle: "The Cookie That Broke My Algorithm", productName: "Matcha Strawberry Mochi Cookie", description: "Chewy mochi-textured cookie with earthy matcha dough and bright freeze-dried strawberry pieces. The visual contrast of green and pink makes it incredibly photogenic and the flavor is completely addictive.", tags: ["viral", "photogenic", "trending"] },
+      { sellingTitle: "Sold Out Before I Even Posted the Price", productName: "Butter Board Cookie Sandwich", description: "Two thick brown butter cookies sandwiched around a whipped honey cinnamon butter filling. Inspired by the butter board trend but in handheld form. Rich, decadent, and Instagram gold.", tags: ["viral", "indulgent", "shareable"] }
+    ] } } },
+    nostalgic: { any: { any: { any: [
+      { sellingTitle: "Your Lunchbox Just Called — It Misses You", productName: "Homestyle Oatmeal Raisin Cookie", description: "The classic cookie your grandma made, perfected with plump golden raisins, warm cinnamon, and rolled oats that give every bite real texture. Soft in the center, lightly crisp on the edges. This is the cookie that makes grown adults emotional.", tags: ["nostalgic", "classic", "comforting"] },
+      { sellingTitle: "The Smell That Takes You Back 30 Years", productName: "Old-Fashioned Molasses Spice Cookie", description: "Deep, warming molasses cookies with ginger, clove, and cinnamon rolled in sparkly sugar. Chewy, spiced, and deeply comforting — the kind of cookie that feels like a hug. Perfect for fall and winter menus.", tags: ["nostalgic", "spiced", "classic"] },
+      { sellingTitle: "Childhood in Every Single Bite", productName: "Frosted Soft Sugar Cookie", description: "Thick, cakey vanilla sugar cookies with a cloud of sweet cream cheese frosting and rainbow sprinkles. The kind you'd find at birthday parties and school bake sales — but made with real butter and better ingredients.", tags: ["nostalgic", "festive", "crowd-pleaser"] }
+    ] } } },
+    luxury: { any: { any: { any: [
+      { sellingTitle: "The Cookie That Belongs in a Jewelry Box", productName: "Gold Leaf Champagne Butter Cookie", description: "Delicate French-style butter cookies infused with champagne essence and finished with edible gold leaf. Light, crisp, and utterly refined. Package these in clear boxes tied with ribbon and watch them sell at a premium price point.", tags: ["luxury", "giftable", "elegant"] },
+      { sellingTitle: "When a Cookie Costs More Than Dinner and Worth It", productName: "Valrhona Dark Chocolate Truffle Cookie", description: "Made exclusively with premium Valrhona chocolate, this fudgy, dense cookie is more brownie than cookie. Finished with fleur de sel and a dusting of cocoa powder. This is the cookie you justify as a 'treat yourself' purchase.", tags: ["luxury", "chocolate", "premium"] },
+      { sellingTitle: "The Upgrade Your Cookie Box Deserves", productName: "Earl Grey White Chocolate Shortbread", description: "Buttery shortbread steeped with Earl Grey tea and bergamot, dipped in premium white chocolate and finished with dried lavender. Sophisticated, aromatic, and completely unforgettable.", tags: ["luxury", "floral", "elegant"] }
+    ] } } },
+    whimsical: { any: { any: { any: [
+      { sellingTitle: "Too Cute to Eat (But You Will Anyway)", productName: "Rainbow Swirl Cloud Cookie", description: "Soft, pillowy vanilla cookies with pastel rainbow swirls throughout the dough, topped with white chocolate and edible glitter. These look like they belong in a fairytale and taste like pure joy.", tags: ["whimsical", "colorful", "fun"] },
+      { sellingTitle: "The Cookie That Makes Adults Act Like Kids", productName: "Cereal Milk Cookie", description: "Inspired by the milk left over after your favorite childhood cereal — a sweet, creamy dough with crushed colorful cereal mixed throughout. Nostalgic, playful, and wildly addictive.", tags: ["whimsical", "fun", "nostalgic"] },
+      { sellingTitle: "Your Inner Child Is Losing Its Mind Right Now", productName: "Carnival Cotton Candy Cookie", description: "Soft sugar cookie dough swirled with cotton candy flavoring and packed with pastel sprinkles, topped with a cotton candy tuft. Literally tastes like the county fair. A showstopper for kids' tables and dessert spreads.", tags: ["whimsical", "fun", "festive"] }
+    ] } } }
+  },
+  cakes: {
+    any: { any: { any: { any: [
+      { sellingTitle: "The Centerpiece They'll Photograph Before They Cut It", productName: "Naked Layer Cake with Fresh Flowers", description: "A rustic semi-naked cake with exposed layers, whipped cream frosting, and seasonal fresh flowers cascading down the side. Stunning, elegant, and endlessly customizable for any occasion. This is your signature showpiece.", tags: ["elegant", "customizable", "photogenic"] },
+      { sellingTitle: "The Cake That Gets You Booked Months in Advance", productName: "Ombre Buttercream Celebration Cake", description: "A four-layer vanilla or chocolate cake with perfectly blended ombre buttercream in custom colors. Smooth, professional, and completely breathtaking on a dessert table. Offer this in seasonal color palettes to keep your menu fresh year-round.", tags: ["showstopper", "customizable", "bestseller"] },
+      { sellingTitle: "One Slice Is Never Enough", productName: "Brown Butter Caramel Apple Layer Cake", description: "Spiced apple cake layers with brown butter frosting and ribbons of salted caramel throughout. Topped with caramel drip and cinnamon sugar apples. The kind of cake that has people negotiating for the last slice.", tags: ["seasonal", "indulgent", "crowd-pleaser"] },
+      { sellingTitle: "The Cake That Outsells Everything Else on Your Menu", productName: "Triple Chocolate Fudge Layer Cake", description: "Deeply rich chocolate cake layers with chocolate fudge filling, dark chocolate ganache frosting, and a dramatic chocolate drip. For serious chocolate lovers only. This cake is why people reach out to custom bakers instead of grocery stores.", tags: ["chocolate", "indulgent", "bestseller"] },
+      { sellingTitle: "Wedding Vibes Without the Wedding Price Tag", productName: "Vanilla Bean Elderflower Cake", description: "Light, airy vanilla bean cake layers with whipped elderflower cream frosting and edible pressed flowers. Delicate, romantic, and completely magical. Perfect for bridal showers, anniversaries, and special celebrations.", tags: ["elegant", "floral", "romantic"] },
+      { sellingTitle: "The Flavor Combo Nobody Saw Coming", productName: "Cardamom Honey Pistachio Cake", description: "Warmly spiced cardamom cake layers filled with honey mascarpone cream and crushed pistachios. Inspired by Middle Eastern flavors but completely approachable. This is your menu's most sophisticated offering and the one that earns the most compliments.", tags: ["unique", "elevated", "trending"] }
+    ] } } },
+    viral: { any: { any: { any: [
+      { sellingTitle: "The Cake Version of the Most Viral Dessert of the Year", productName: "Dubai Chocolate Drip Cake", description: "Milk chocolate cake layers filled with pistachio cream and crispy kataifi pastry, coated in a Dubai-style chocolate shell. The viral dessert trend translated into a stunning custom cake that photographs beautifully.", tags: ["viral", "trending", "showstopper"] },
+      { sellingTitle: "Everyone Is Talking About This One", productName: "Cottagecore Pressed Flower Cake", description: "A simple white cake decorated with real edible pressed flowers and greenery in a whimsical, garden-inspired design. Completely on-trend with the cottagecore aesthetic taking over social media and perfect for spring and summer orders.", tags: ["viral", "aesthetic", "floral"] }
+    ] } } }
+  },
+  brownies: {
+    any: { any: { any: { any: [
+      { sellingTitle: "The Last Brownie Recipe Anyone Will Ever Need", productName: "Fudgy Dark Chocolate Sea Salt Brownie", description: "Dense, fudgy, and intensely chocolatey with a crinkle-top crust and flaky sea salt finish. Made with real dark chocolate (not cocoa powder) for depth of flavor that sets these apart from anything store-bought. Your baseline bestseller.", tags: ["classic", "indulgent", "bestseller"] },
+      { sellingTitle: "The Brownie That Started a Waitlist", productName: "Stuffed Nutella Brownie", description: "A rich chocolate brownie wrapped around a frozen Nutella center that stays perfectly gooey even after baking. Cut open to reveal the molten hazelnut surprise inside. Sell these warm and watch the orders stack up.", tags: ["stuffed", "viral", "indulgent"] },
+      { sellingTitle: "Adults Only: This Brownie Is Serious Business", productName: "Espresso Bourbon Brownie", description: "Deeply complex brownies with a double shot of espresso and a splash of bourbon baked in, finished with a bourbon caramel glaze. Sophisticated, bold, and completely unforgettable. Position these as a premium 'grown-up' treat.", tags: ["bold", "premium", "adult"] },
+      { sellingTitle: "The One That Disappears First at Every Party", productName: "Oreo Cookie Butter Brownie", description: "A chewy brownie base swirled with cookie butter spread and topped with crushed Oreos and a cookie butter drizzle. Familiar flavors combined in a way nobody has tried before — the ultimate crowd-pleaser for any age.", tags: ["crowd-pleaser", "fun", "nostalgic"] },
+      { sellingTitle: "They Will Venmo You Before You Finish the Post", productName: "Caramel Pretzel Brownie", description: "Fudgy chocolate brownie layered with thick salted caramel and studded with mini pretzels for the perfect sweet-salty crunch. The salty-sweet combo makes these completely addictive and impossible to stop at just one.", tags: ["sweet-salty", "crowd-pleaser", "addictive"] },
+      { sellingTitle: "The Brownie Box That Sells Itself", productName: "Brownie Flight Box — Four Flavors", description: "Four mini brownies in different flavors — classic fudge, salted caramel, espresso, and cookies & cream — packaged in a windowed gift box. An irresistible 'try everything' option that upsells naturally and makes the perfect gift.", tags: ["giftable", "variety", "premium"] }
+    ] } } },
+    glutenfree: { any: { any: { any: [
+      { sellingTitle: "Gluten-Free Never Tasted This Good, Period", productName: "Flourless Dark Chocolate Brownie", description: "Made entirely without flour using just dark chocolate, butter, eggs, and sugar — the result is an incredibly dense, rich, and fudgy brownie that's naturally gluten-free. Nobody will know unless you tell them. A staple for your GF menu.", tags: ["gluten-free", "flourless", "allergy-friendly"] },
+      { sellingTitle: "The GF Brownie Your Non-GF Friends Will Steal", productName: "Almond Flour Salted Caramel Brownie", description: "Chewy, fudgy brownies made with almond flour for a slightly nutty richness that actually enhances the chocolate flavor. Swirled with salted caramel and topped with a flaky sea salt finish. Indistinguishable from the 'regular' version.", tags: ["gluten-free", "almond-flour", "indulgent"] }
+    ] } } },
+    vegan: { any: { any: { any: [
+      { sellingTitle: "The Vegan Brownie That Converted a Skeptic", productName: "Black Bean Fudge Brownie", description: "Sneaky, creamy, and intensely chocolatey — black beans replace the flour and eggs to create a brownie so fudgy and dense that nobody guesses the secret. Naturally vegan and packed with protein. Your most surprising menu item.", tags: ["vegan", "high-protein", "surprising"] },
+      { sellingTitle: "Plant-Based Never Looked This Indulgent", productName: "Coconut Oil Dark Chocolate Brownie", description: "Rich vegan brownies made with coconut oil and flax eggs, studded with dairy-free dark chocolate chips. Deeply fudgy with a perfectly crinkly top. Serve with a coconut whipped cream dollop for an elevated presentation.", tags: ["vegan", "dairy-free", "indulgent"] }
+    ] } } }
+  },
+  cakepops: {
+    any: { any: { any: { any: [
+      { sellingTitle: "The Party Favor That Outshines the Cake", productName: "Champagne Truffle Cake Pop", description: "Delicate champagne cake blended with cream cheese frosting, dipped in white chocolate, and finished with gold pearl dust and edible glitter. These look like luxury truffles and taste even better. Perfect for weddings, showers, and New Year's events.", tags: ["luxury", "elegant", "giftable"] },
+      { sellingTitle: "They Ordered 24 and Came Back for 48 More", productName: "Red Velvet Cream Cheese Cake Pop", description: "The classic red velvet and cream cheese combo in perfect handheld form. Rich red velvet cake blended with cream cheese frosting, dipped in smooth white chocolate, and decorated with red velvet crumbs. A bestseller for every season.", tags: ["classic", "bestseller", "crowd-pleaser"] },
+      { sellingTitle: "The Most Photogenic Thing on Your Menu", productName: "Unicorn Swirl Cake Pop", description: "Vanilla rainbow swirl cake pops dipped in white chocolate and decorated with pastel swirls, edible glitter, and a tiny fondant horn. Completely magical, incredibly fun, and the most photographed item at any party spread.", tags: ["whimsical", "photogenic", "festive"] },
+      { sellingTitle: "Corporate Orders Will Find You for These", productName: "Logo-Stamped Branded Cake Pop", description: "Custom cake pops with your client's logo, team colors, or event theme stamped or painted on top. Premium dipped chocolate coating with fully personalized decorations. A high-ticket item that opens the door to bulk corporate orders.", tags: ["custom", "corporate", "premium"] },
+      { sellingTitle: "The Flavor Combination Nobody Expected", productName: "Lemon Blueberry Cheesecake Pop", description: "Tangy lemon cheesecake cake blended with real blueberry preserves, dipped in white chocolate, and finished with a bright purple drizzle and dried blueberry pieces. Fresh, unexpected, and completely irresistible for spring and summer.", tags: ["fruity", "seasonal", "unique"] }
+    ] } } },
+    halloween: { any: { any: { any: [
+      { sellingTitle: "The Treat That Scares Up Orders Every October", productName: "Halloween Monster Cake Pop", description: "Chocolate cake pops dipped in orange and black chocolate and decorated as mini monsters, ghosts, and jack-o-lanterns. Completely custom decorations that make these the highlight of every Halloween party and school event.", tags: ["halloween", "festive", "fun"] },
+      { sellingTitle: "Too Spooky to Eat (But They Will)", productName: "Graveyard Dirt Cake Pop", description: "Chocolate and 'dirt' (crushed Oreo) cake pop with a dark chocolate coating and a tiny fondant tombstone sticking out of the top. Dark, dramatic, and delightfully spooky. Perfect for Halloween events and trick-or-treat alternatives.", tags: ["halloween", "spooky", "creative"] }
+    ] } } }
+  },
+  breads: {
+    any: { any: { any: { any: [
+      { sellingTitle: "The Loaf That Has Neighbors Knocking on Your Door", productName: "Honey Oat Whole Grain Sandwich Loaf", description: "A hearty, wholesome sandwich loaf with rolled oats, wildflower honey, and whole wheat flour. Slightly sweet, deeply satisfying, and the kind of bread that makes store-bought impossible to go back to. Slice and package for easy sale.", tags: ["wholesome", "everyday", "bestseller"] },
+      { sellingTitle: "The Reason Sourdough Has a Fan Club", productName: "Classic Artisan Sourdough Boule", description: "A perfectly fermented, open-crumb sourdough with a crackling crust and complex tang. Made with a mature starter for depth of flavor that no commercial yeast can replicate. Score with decorative patterns and sell whole for a premium price.", tags: ["artisan", "sourdough", "premium"] },
+      { sellingTitle: "Weekend Mornings Just Got a Major Upgrade", productName: "Cinnamon Swirl Pull-Apart Bread", description: "A soft, pillowy enriched dough swirled with cinnamon sugar and baked in a loaf pan so every pull reveals another layer of sweet, spiced goodness. Top with a simple vanilla glaze. These sell out at farmers markets before 9am.", tags: ["sweet", "crowd-pleaser", "morning"] },
+      { sellingTitle: "The Bread That Turns Non-Bread-Bakers Into Customers", productName: "Rosemary Garlic Focaccia", description: "Thick, olive-oil-drenched focaccia dimpled and topped with fresh rosemary, roasted garlic, and flaky sea salt. Cut into squares for easy snacking and pricing. A savory option that diversifies your menu and attracts a completely different customer.", tags: ["savory", "artisan", "crowd-pleaser"] },
+      { sellingTitle: "This Loaf Has a 100% Repeat Customer Rate", productName: "Jalapeño Cheddar Sourdough", description: "Tangy sourdough dough loaded with sharp cheddar and pickled jalapeño slices baked right into the crumb. Bold, cheesy, and spicy with a dramatic look. A specialty loaf that people won't find anywhere else and will drive specifically to get.", tags: ["specialty", "bold", "savory"] },
+      { sellingTitle: "Farmers Market's Fastest Sellout, Guaranteed", productName: "Cranberry Walnut Harvest Boule", description: "A rustic round loaf with tart dried cranberries, toasted walnuts, and a touch of honey swirled through a whole wheat sourdough crumb. Perfect for fall and holiday menus and pairs beautifully with cheese boards.", tags: ["seasonal", "artisan", "giftable"] }
+    ] } } },
+    glutenfree: { any: { any: { any: [
+      { sellingTitle: "GF Bread That Actually Tastes Like Bread", productName: "Gluten-Free Sandwich Loaf", description: "A soft, sliceable sandwich bread made with a blend of rice flour, tapioca, and psyllium husk for the perfect structure and chew. No gummy texture, no crumbling — just real bread for people who've been missing it. A high-demand staple in any GF household.", tags: ["gluten-free", "everyday", "staple"] },
+      { sellingTitle: "The GF Focaccia That Converts Everyone", productName: "Gluten-Free Rosemary Olive Focaccia", description: "Light, airy gluten-free focaccia with olive oil, rosemary, and kalamata olives baked on top. The rice flour blend creates a surprisingly authentic texture that even non-GF eaters love. Sell by the square at markets for easy sampling.", tags: ["gluten-free", "savory", "crowd-pleaser"] }
+    ] } } }
+  },
+  cupcakes: {
+    any: { any: { any: { any: [
+      { sellingTitle: "The Cupcake That Books You Out Three Weeks Ahead", productName: "Salted Caramel Stuffed Vanilla Cupcake", description: "A moist vanilla bean cupcake with a hidden pocket of salted caramel sauce, topped with caramel buttercream and a drizzle of salted caramel on top. The surprise center makes every bite an event. A top seller for birthdays and celebrations.", tags: ["stuffed", "bestseller", "crowd-pleaser"] },
+      { sellingTitle: "The Cupcake That Tastes Like a Whole Dessert", productName: "Strawberry Cheesecake Cupcake", description: "Graham cracker crust baked into the bottom, strawberry cream cheese filling, and cream cheese frosting with a fresh strawberry on top. Like a deconstructed cheesecake in cupcake form. Visually stunning and completely irresistible.", tags: ["unique", "showstopper", "fruity"] },
+      { sellingTitle: "One Dozen Turns Into a Standing Order Every Time", productName: "Classic Birthday Funfetti Cupcake", description: "Soft, tender vanilla cake with rainbow sprinkles throughout, topped with a tall swirl of vanilla buttercream and more sprinkles. The birthday cupcake that every parent orders and every kid goes wild for. Your bread-and-butter repeating order.", tags: ["classic", "festive", "crowd-pleaser"] },
+      { sellingTitle: "The Grown-Up Cupcake for People With Taste", productName: "Dark Chocolate Raspberry Cupcake", description: "Rich dark chocolate cupcake filled with fresh raspberry jam and topped with a dark chocolate ganache and fresh raspberry buttercream rosette. Sophisticated, gorgeous, and the cupcake that makes people feel special. Premium price point, always worth it.", tags: ["elegant", "premium", "chocolate"] },
+      { sellingTitle: "The Seasonal Drop That Sells Out in Hours", productName: "Honey Lavender Lemon Cupcake", description: "Light lemon cupcake with lavender honey buttercream and a dusting of dried lavender buds and lemon zest. Floral, fresh, and completely ethereal. A limited seasonal offering that creates urgency and a cult following every spring.", tags: ["seasonal", "floral", "limited-edition"] },
+      { sellingTitle: "The Cupcake Box That Gifts Itself", productName: "Mini Cupcake Sampler Box — Six Flavors", description: "Six bite-size cupcakes in rotating seasonal flavors — packaged in a windowed bakery box tied with a ribbon. The ultimate gift box option that photographs beautifully and sells at a premium. Offer monthly flavor rotations to keep repeat customers excited.", tags: ["giftable", "variety", "premium"] }
+    ] } } },
+    mothersday: { any: { any: { any: [
+      { sellingTitle: "Mom Deserves Better Than a Grocery Store Cake", productName: "Rose & Raspberry Mother's Day Cupcake", description: "Delicate rose-infused vanilla cupcake with fresh raspberry curd center and rose buttercream piped into a full bloom shape, finished with a real dried rose petal. Romantic, beautiful, and the exact thing to post the week before Mother's Day.", tags: ["mother's day", "floral", "romantic"] },
+      { sellingTitle: "The Mother's Day Pre-Order That Fills Your Calendar", productName: "Champagne Strawberry Celebration Cupcake", description: "Champagne-infused golden cupcake filled with strawberry compote and topped with champagne buttercream and a chocolate-dipped strawberry. Celebratory, elegant, and perfect for the moms who deserve to feel like they're at brunch.", tags: ["mother's day", "elegant", "celebratory"] }
+    ] } } },
+    halloween: { any: { any: { any: [
+      { sellingTitle: "The Halloween Table Needs These Immediately", productName: "Black Velvet Spider Web Cupcake", description: "Dramatically dark black cocoa cupcake with orange cream cheese frosting and a white chocolate spider web design on top, finished with a candy spider. Spooky, stunning, and the most photographed item at every Halloween party.", tags: ["halloween", "dramatic", "spooky"] }
+    ] } } },
+    christmas: { any: { any: { any: [
+      { sellingTitle: "Christmas Morning in Cupcake Form", productName: "Gingerbread Eggnog Cupcake", description: "Warmly spiced gingerbread cupcake with a rich eggnog buttercream and a dusting of cinnamon and a tiny fondant Christmas ornament on top. The flavor of the holidays in every single bite. Pre-orders for these always exceed expectations.", tags: ["christmas", "seasonal", "holiday"] }
+    ] } } }
+  }
+};
 
-  function showPage(page) {
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.getElementById('page-' + page).classList.add('active');
-    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active-nav'));
-    event.target.classList.add('active-nav');
-    window.scrollTo(0, 0);
+function getPool(cat, trend, season, holiday, diet) {
+  const catData = CONCEPTS[cat];
+  if (!catData) return [];
+  const trendData = catData[trend] || catData['any'];
+  if (!trendData) return [];
+  const seasonData = trendData[season] || trendData['any'];
+  if (!seasonData) return [];
+  const holidayData = seasonData[holiday] || seasonData['any'];
+  if (!holidayData) return [];
+  const dietData = holidayData[diet] || holidayData['any'];
+  return dietData || [];
+}
+
+let currentCategory = 'cookies';
+let lastPick = [];
+
+function setCategory(el, cat) {
+  currentCategory = cat;
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function showPage(page, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active-nav'));
+  if (btn) btn.classList.add('active-nav');
+  window.scrollTo(0, 0);
+}
+
+function generateConcepts() {
+  const trend = document.getElementById('filter-trend').value;
+  const season = document.getElementById('filter-season').value;
+  const holiday = document.getElementById('filter-holiday').value;
+  const diet = document.getElementById('filter-diet').value;
+
+  let pool = getPool(currentCategory, trend, season, holiday, diet);
+
+  // fallback to any if specific combo not found
+  if (!pool || pool.length === 0) {
+    pool = getPool(currentCategory, 'any', 'any', 'any', 'any');
   }
 
-  function setCategory(el, cat) {
-    currentCategory = cat;
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    el.classList.add('active');
+  if (!pool || pool.length === 0) {
+    alert('No concepts found for this combination. Try adjusting your filters!');
+    return;
   }
 
-  async function generateConcepts() {
-    const trend = document.getElementById('filter-trend').value;
-    const season = document.getElementById('filter-season').value;
-    const holiday = document.getElementById('filter-holiday').value;
-    const diet = document.getElementById('filter-diet').value;
+  // shuffle and pick 4 (avoid repeats if possible)
+  const shuffled = [...pool].sort(() => Math.random() - 0.5);
+  const picked = shuffled.slice(0, Math.min(4, shuffled.length));
 
-    const filters = [];
-    if (trend !== 'none') filters.push(trend);
-    if (season !== 'none') filters.push(`perfect for ${season}`);
-    if (holiday !== 'none') filters.push(`themed for ${holiday}`);
-    if (diet !== 'none') filters.push(`${diet} friendly`);
+  renderConcepts(picked);
 
-    const filterText = filters.length > 0
-      ? `The concepts should be: ${filters.join(', ')}.`
-      : 'Be creative and varied with the concepts.';
+  const results = document.getElementById('results');
+  results.classList.remove('visible');
+  void results.offsetWidth;
+  results.classList.add('visible');
+  setTimeout(() => results.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+}
 
-    const prompt = `You are a creative pastry chef and food trend expert helping home bakers come up with exciting, sellable dessert concepts.
-
-Generate exactly 4 unique ${currentCategory} concepts for a home baker to sell.
-${filterText}
-
-For each concept, provide:
-1. A catchy SELLING TITLE (think: what would make someone stop scrolling and want to buy this — be creative, evocative, and marketable)
-2. A PRODUCT NAME (the actual dessert name, 3-6 words)
-3. A DESCRIPTION (2-3 sentences that make it sound irresistible and help the baker understand what makes it special)
-4. 2-3 SHORT TAGS (trend, dietary, or occasion tags)
-
-Respond ONLY with a valid JSON array, no markdown, no explanation, no backticks. Format exactly like this:
-[
-  {
-    "sellingTitle": "The title that sells",
-    "productName": "Actual Dessert Name",
-    "description": "Irresistible description here.",
-    "tags": ["tag1", "tag2"]
-  }
-]`;
-
-    // UI state
-    const btn = document.getElementById('generate-btn');
-    const loading = document.getElementById('loading');
-    const results = document.getElementById('results');
-    const errorBox = document.getElementById('error-box');
-
-    btn.disabled = true;
-    loading.classList.add('visible');
-    results.classList.remove('visible');
-    errorBox.classList.remove('visible');
-
-    try {
-      const response = await fetch('https://api.anthropic.com/v1/messages', {
-        method: 'POST',
-       headers: { 
-  'Content-Type': 'application/json',
-  'x-api-key': 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,
-  'anthropic-version': '2023-06-01'
-},
-        body: JSON.stringify({
-          model: 'claude-sonnet-4-20250514',
-          max_tokens: 1000,
-          messages: [{ role: 'user', content: prompt }]
-        })
-      });
-
-      const data = await response.json();
-      const text = data.content.map(i => i.text || '').join('');
-      const clean = text.replace(/```json|```/g, '').trim();
-      const concepts = JSON.parse(clean);
-
-      renderConcepts(concepts);
-      results.classList.add('visible');
-
-    } catch (err) {
-      console.error(err);
-      errorBox.classList.add('visible');
-    } finally {
-      btn.disabled = false;
-      loading.classList.remove('visible');
-    }
-  }
-
-  function renderConcepts(concepts) {
-    const grid = document.getElementById('concepts-grid');
-    grid.innerHTML = '';
-    concepts.forEach((c, i) => {
-      const tags = (c.tags || []).map(t => `<span class="concept-tag">${t}</span>`).join('');
-      grid.innerHTML += `
-        <div class="concept-card">
-          <div class="concept-number">Concept ${i + 1}</div>
-          <div class="concept-selling-title">${c.sellingTitle}</div>
-          <div class="concept-name">✦ ${c.productName}</div>
-          <div class="concept-description">${c.description}</div>
-          <div class="concept-tags">${tags}</div>
-        </div>`;
-    });
-  }
+function renderConcepts(concepts) {
+  const grid = document.getElementById('concepts-grid');
+  grid.innerHTML = '';
+  concepts.forEach((c, i) => {
+    const tags = (c.tags || []).map(t => `<span class="concept-tag">${t}</span>`).join('');
+    grid.innerHTML += `
+      <div class="concept-card">
+        <div class="concept-number">Concept ${i + 1}</div>
+        <div class="concept-selling-title">${c.sellingTitle}</div>
+        <div class="concept-name">✦ ${c.productName}</div>
+        <div class="concept-description">${c.description}</div>
+        <div class="concept-tags">${tags}</div>
+      </div>`;
+  });
+}
 </script>
 </body>
 </html>
