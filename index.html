@@ -27,9 +27,14 @@
   .header { background: var(--white); border-bottom: 1px solid var(--border); padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px rgba(45,24,16,0.06); }
   .logo { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--chocolate); display: flex; align-items: center; gap: 8px; }
   .logo span { color: var(--rose); }
-  .nav-group { display: flex; gap: 8px; }
+  .nav-group { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+  .nav-buttons { display: flex; gap: 8px; }
+  .nav-hint { font-size: 10px; color: var(--stone); font-weight: 400; letter-spacing: 0.3px; text-align: right; }
+  .nav-hint strong { color: var(--rose); font-weight: 700; }
   .nav-btn { background: none; border: 1.5px solid var(--border); border-radius: 50px; padding: 8px 18px; font-family: 'Nunito', sans-serif; font-size: 13px; font-weight: 600; color: var(--mocha); cursor: pointer; transition: all 0.2s; }
   .nav-btn:hover, .nav-btn.active-nav { background: var(--chocolate); border-color: var(--chocolate); color: white; }
+  .nav-btn.advertise-btn { border-color: var(--rose); color: var(--rose); }
+  .nav-btn.advertise-btn:hover, .nav-btn.advertise-btn.active-nav { background: var(--rose); border-color: var(--rose); color: white; }
   .content { max-width: 800px; margin: 0 auto; padding: 40px 24px 80px; }
   .page-hero { text-align: center; margin-bottom: 40px; }
   .page-hero .tag { display: inline-block; background: var(--blush); color: var(--rose); font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; padding: 6px 16px; border-radius: 50px; margin-bottom: 16px; }
@@ -88,7 +93,14 @@
   .dos ul li, .donts ul li { font-size: 13px; color: var(--mocha); padding: 3px 0; display: flex; gap: 6px; line-height: 1.4; }
   .section-title { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--chocolate); margin-bottom: 6px; margin-top: 36px; }
   .section-sub { font-size: 14px; color: var(--stone); margin-bottom: 20px; }
-  @media (max-width: 540px) { .filters-grid { grid-template-columns: 1fr; } .dos-donts { grid-template-columns: 1fr; } .step-card { flex-direction: column; gap: 12px; } .nav-btn { padding: 7px 12px; font-size: 12px; } }
+  .dwb-card { background: linear-gradient(135deg, var(--chocolate) 0%, var(--mocha) 100%); border-radius: 20px; padding: 32px 36px; margin-top: 8px; margin-bottom: 32px; text-align: center; color: white; position: relative; overflow: hidden; }
+  .dwb-card::before { content: '🍰'; position: absolute; right: 24px; top: 50%; transform: translateY(-50%); font-size: 64px; opacity: 0.08; pointer-events: none; }
+  .dwb-card .dwb-tag { display: inline-block; background: rgba(255,255,255,0.15); color: white; font-size: 10px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; padding: 5px 14px; border-radius: 50px; margin-bottom: 14px; }
+  .dwb-card h3 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; margin-bottom: 10px; line-height: 1.2; }
+  .dwb-card p { font-size: 13.5px; opacity: 0.85; line-height: 1.65; margin-bottom: 20px; max-width: 420px; margin-left: auto; margin-right: auto; }
+  .dwb-btn { display: inline-block; background: var(--rose); color: white; font-family: 'Nunito', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 14px 36px; border-radius: 50px; text-decoration: none; transition: all 0.2s; box-shadow: 0 4px 16px rgba(232,131,106,0.4); }
+  .dwb-btn:hover { background: var(--rose-dark); transform: translateY(-2px); }
+  @media (max-width: 540px) { .filters-grid { grid-template-columns: 1fr; } .dos-donts { grid-template-columns: 1fr; } .step-card { flex-direction: column; gap: 12px; } .nav-btn { padding: 7px 10px; font-size: 11px; } .nav-hint { font-size: 9px; } }
 </style>
 </head>
 <body>
@@ -96,8 +108,11 @@
 <div class="header">
   <div class="logo">🍰 <span>Bake</span>Lab</div>
   <div class="nav-group">
-    <button class="nav-btn active-nav" onclick="showPage('generator', this)">✨ Generator</button>
-    <button class="nav-btn" onclick="showPage('facebook', this)">📣 Advertise Locally</button>
+    <div class="nav-buttons">
+      <button class="nav-btn active-nav" id="btn-generator" onclick="showPage('generator', this)">✨ Generator</button>
+      <button class="nav-btn advertise-btn" id="btn-facebook" onclick="showPage('facebook', this)">📣 Advertise Locally</button>
+    </div>
+    <div class="nav-hint">👆 <strong>Two tools in one</strong> — toggle between tabs!</div>
   </div>
 </div>
 
@@ -173,6 +188,15 @@
         <button class="regen-btn" onclick="generateConcepts()">↺ New Ideas</button>
       </div>
       <div class="concepts-grid" id="concepts-grid"></div>
+
+      <!-- DWB OFFER -->
+      <div class="dwb-card">
+        <div class="dwb-tag">Want to sell these concepts?</div>
+        <h3>Turn Your Recipes Into<br>Digital Income</h3>
+        <p>The Digital Wealth Blueprint is Nicole Crispi's complete 10-step system for bakers who are ready to stop taking orders and start selling digital products that make money while they sleep.</p>
+        <a href="https://stan.store/NicoleCrispi/p/the-1-course-for-bakers-learning-online-wealth-q8dzha59" target="_blank" class="dwb-btn">Get the Blueprint →</a>
+      </div>
+
     </div>
   </div>
 </div>
@@ -277,14 +301,13 @@ Payment via [Venmo/CashApp/PayPal] at pickup. Let me know and I'll get you on th
         </ul>
       </div>
     </div>
-    <div class="step-card" style="margin-top: 24px; background: var(--blush); border-color: var(--blush-mid);">
-      <div class="step-number" style="background: var(--rose); color: white;">🎯</div>
-      <div class="step-content">
-        <h3>Ready to Go Further?</h3>
-        <p>Once you have local buyers, the next step is turning your recipes into digital products that sell while you sleep. Nicole Crispi's Digital Wealth Blueprint shows bakers exactly how to do it — step by step.</p>
-        <div class="tip" style="margin-top: 12px;">👉 <strong><a href="https://stan.store/NicoleCrispi/p/the-1-course-for-bakers-learning-online-wealth-q8dzha59" target="_blank" style="color: var(--rose-dark); text-decoration: none;">Get the Digital Wealth Blueprint →</a></strong></div>
-      </div>
+    <div class="dwb-card" style="margin-top: 32px;">
+      <div class="dwb-tag">Ready for the next level?</div>
+      <h3>Turn Your Recipes Into<br>Digital Income</h3>
+      <p>The Digital Wealth Blueprint is Nicole Crispi's complete 10-step system for bakers who are ready to stop taking orders and start selling digital products that make money while they sleep.</p>
+      <a href="https://stan.store/NicoleCrispi/p/the-1-course-for-bakers-learning-online-wealth-q8dzha59" target="_blank" class="dwb-btn">Get the Blueprint →</a>
     </div>
+
   </div>
 </div>
 
